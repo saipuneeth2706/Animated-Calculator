@@ -6,6 +6,7 @@
     text-align: center;
     margin-bottom: 20px;
     transition: text-shadow 0.3s ease;
+    letter-spacing: -3.5px;
 }
 .heading:hover{
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
