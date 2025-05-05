@@ -2,8 +2,94 @@
     <head>
         <link rel="shortcut icon" href="Favicon.png" type="image/png">
         <title>Animated Calculator</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     </head>
-    <body>
-        <h1>Changed Favicon</h1>
+    <body class="min-h-screen flex items-center justify-center p-4">
+        <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+    <div class="calculator-container" id="calculator-container">
+        <div class="calculator rounded-2xl p-5 w-full max-w-md">
+            <div class="display rounded-lg p-4 mb-5 h-24 flex flex-col justify-end items-end bg-slate-100">
+                <div id="previous-operand" class="text-slate-500 text-sm h-5"></div>
+                <div id="current-operand" class="text-slate-800 text-3xl font-medium truncate w-full text-right"></div>
+            </div>
+            <div class="grid grid-cols-4 gap-3">
+                <button class="btn btn-clear rounded-lg p-3 text-base font-medium col-span-2 relative" data-action="clear">
+                    <span class="relative z-10">AC</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-clear rounded-lg p-3 text-base font-medium relative" data-action="delete">
+                    <span class="relative z-10">DEL</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-operator rounded-lg p-3 text-base font-medium relative" data-action="÷">
+                    <span class="relative z-10">÷</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="7">
+                    <span class="relative z-10">7</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="8">
+                    <span class="relative z-10">8</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="9">
+                    <span class="relative z-10">9</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-operator rounded-lg p-3 text-base font-medium relative" data-action="×">
+                    <span class="relative z-10">×</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="4">
+                    <span class="relative z-10">4</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="5">
+                    <span class="relative z-10">5</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="6">
+                    <span class="relative z-10">6</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-operator rounded-lg p-3 text-base font-medium relative" data-action="-">
+                    <span class="relative z-10">−</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="1">
+                    <span class="relative z-10">1</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="2">
+                    <span class="relative z-10">2</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="3">
+                    <span class="relative z-10">3</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-operator rounded-lg p-3 text-base font-medium relative" data-action="+">
+                    <span class="relative z-10">+</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-decimal rounded-lg p-3 text-base font-medium relative" data-action=".">
+                    <span class="relative z-10">.</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-number rounded-lg p-3 text-base font-medium relative" data-action="0">
+                    <span class="relative z-10">0</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-equals rounded-lg p-3 text-base font-medium col-span-2 relative" data-action="=">
+                    <span class="relative z-10">=</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
     </body>
 </html>
