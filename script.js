@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Calculator logic
+document.addEventListener('DOMContentLoaded', () => {   
     const calculator = {
         displayValue: '0',
         firstOperand: null,
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Custom cursor logic
+    
     const cursor = document.getElementById('cursor');
     const cursorFollower = document.getElementById('cursor-follower');
     let mouseX = 0, mouseY = 0;
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let particleInterval;
     let lastParticleTime = 0;
     
-    // Smooth cursor movement
+    
     const moveCursor = () => {
         posX += (mouseX - posX) / 6;
         posY += (mouseY - posY) / 6;
@@ -110,20 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     moveCursor();
     
-    // Track mouse position
+    
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
-        // Create particles for trail effect
+        
         const now = Date.now();
-        if (now - lastParticleTime > 30) { // Limit particle creation rate
+        if (now - lastParticleTime > 30) { 
             createParticle(e.clientX, e.clientY);
             lastParticleTime = now;
         }
     });
     
-    // Create a single particle
+    
     function createParticle(x, y) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
@@ -131,20 +130,20 @@ document.addEventListener('DOMContentLoaded', () => {
         particle.style.top = `${y}px`;
         document.body.appendChild(particle);
         
-        // Remove particle after animation
+      
         setTimeout(() => {
             particle.remove();
         }, 1000);
     }
     
-    // Cursor interaction effects
+   
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', () => {
             cursor.classList.add('cursor-active');
             cursorFollower.classList.add('cursor-follower-active');
             
-            // Change cursor color based on button type
+            
             if (button.classList.contains('btn-equals')) {
                 cursor.style.backgroundColor = 'rgba(59, 130, 246, 0.8)';
                 cursorFollower.style.borderColor = 'rgba(59, 130, 246, 0.6)';
@@ -165,11 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const { action } = e.target.dataset;
             
-            // Create ripple effect
+            
             const ripple = document.createElement('span');
             ripple.classList.add('ripple');
             
-            // Position the ripple at the click location
+            
             const rect = e.target.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -178,12 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ripple.style.top = `${y}px`;
             e.target.appendChild(ripple);
             
-            // Remove ripple after animation completes
+          
             setTimeout(() => {
                 ripple.remove();
             }, 600);
             
-            // Button press animation
+         
             gsap.to(e.target, {
                 duration: 0.1,
                 scale: 0.96,
@@ -226,20 +225,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3D tilt effect
+    
     const calculatorContainer = document.getElementById('calculator-container');
     
     document.addEventListener('mousemove', (e) => {
         const x = e.clientX / window.innerWidth;
         const y = e.clientY / window.innerHeight;
         
-        // More subtle tilt values
-        const tiltX = (y - 0.5) * 8; // Vertical tilt (up/down)
-        const tiltY = (0.5 - x) * 8; // Horizontal tilt (left/right)
+     
+        const tiltX = (y - 0.5) * 8; 
+        const tiltY = (0.5 - x) * 8; 
         
         calculatorContainer.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
         
-        // Add slight shadow movement for depth
+        
         const shadowX = tiltY * 0.5;
         const shadowY = tiltX * 0.5;
         calculatorContainer.querySelector('.calculator').style.boxShadow = 
@@ -247,14 +246,14 @@ document.addEventListener('DOMContentLoaded', () => {
              ${shadowX/2}px ${shadowY/2}px 10px -5px rgba(0, 0, 0, 0.02)`;
     });
 
-    // Reset position when mouse leaves
+   
     calculatorContainer.addEventListener('mouseleave', () => {
         calculatorContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
         calculatorContainer.querySelector('.calculator').style.boxShadow = 
             '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)';
     });
 
-    // Keyboard support
+    
     document.addEventListener('keydown', (e) => {
         const key = e.key;
         let button;
@@ -281,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (button) {
             button.click();
-            // Add visual feedback for keyboard presses
+            
             gsap.to(button, {
                 duration: 0.1,
                 scale: 0.96,
@@ -297,6 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial display
+   
     updateDisplay();
 });
