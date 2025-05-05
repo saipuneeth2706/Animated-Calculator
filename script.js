@@ -299,3 +299,25 @@ document.addEventListener('DOMContentLoaded', () => {
    
     updateDisplay();
 });
+document.querySelectorAll('.letter').forEach(letter => {
+    // Store the default color
+    const defaultColor = 'white';
+    
+    letter.addEventListener('mouseenter', () => {
+      letter.style.color = getRandomColor();  // Change to random color on hover
+    });
+    
+    letter.addEventListener('mouseleave', () => {
+      letter.style.color = defaultColor;  // Revert to default color when mouse leaves
+    });
+  });
+  
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  
